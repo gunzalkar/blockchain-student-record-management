@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if show_sync_button %}
+  <a style="float: right;" class="btn btn-info" href="{{ url_for('replace_chain') }}">Sync</a>
+{% endif %}
+<br>
+<h1 style="text-align:center;">Blockchain</h1>
+{% for block in chain %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        {% if block['index'] %}
+          <small class="text-muted">{{ block['index'] }}</small>
+        {% else %}
+          <small class="text-muted">Genesis Block</small>
+        {% endif %}
+      </div>
+      {% if block['index'] %}
+      <img class="rounded-circle article-img mx-auto d-block" src="{{ url_for('static', filename='img/profile.png') }}">
+        <p class="article-content">
+          "index"         : {{ block['index'] }}
+          "previous_hash" : {{ block['previous_hash'] }}
+          "first_name"    : {{ block['first_name'] }}
+          "last_name"     : {{ block['last_name'] }}
+          "email"         : {{ block['email'] }}
+          "address"       : {{ block['address'] }}
+          "batch"         : {{ block['batch'] }}
+          "roll_no"       : {{ block['roll_no'] }}
+          "enrollment_no" : {{ block['enrollment_no'] }}
+        </p>
+      {% else %}
+        <p class="article-content">
+          "title"         : {{ block['title'] }}
+          "info"          : {{ block['info'] }}
+          "hash"          : {{ hash(block) }}
+        </p>
+      {% endif %}
+    </div>
+  </article>
+  <h3 align="center"><span>&#8595;</span></h3>
+{% endfor %}
+{% endblock content %}

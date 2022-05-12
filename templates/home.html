@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1 style="text-align:center;">Blockchain based Decentralised Student Records Management System</h1><br>
+	<article class="media content-section">
+	  <div class="media-body">
+	    <div class="article-metadata">
+	      <small class="text-muted">Hello</small>
+	    </div>
+		<h2>Server - {{ server_number }}</h2>
+		<h5>Nodes in Network: {{ blockchain_nodes }}</h5>
+		<h5>Address :{{ address }}</h5>
+		<p>
+			{{ url_for('static', filename='css/style.css') }}
+		</p>
+	  </div>
+	</article>
+{% endblock content %}

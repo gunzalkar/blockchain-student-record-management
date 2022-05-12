@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+<hr>
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+        <div class="article-metadata">
+            {% if block['index'] %}
+            <small class="text-muted">{{ block['index'] }}</small>
+            {% else %}
+            <small class="text-muted">Genesis Block</small>
+            {% endif %}
+        </div>
+        {% if block['index'] %}
+            <p class="article-content" style="align-self:right;"> 
+            <img style="align-self: left;" class="rounded-circle article-img" src="{{ url_for('static', filename='img/profile.png') }}">
+            "index"         : {{ block['index'] }}
+            "previous_hash" : {{ block['previous_hash'] }}
+            "first_name"    : {{ block['first_name'] }}
+            "last_name"     : {{ block['last_name'] }}
+            "email"         : {{ block['email'] }}
+            "address"       : {{ block['address'] }}
+            "batch"         : {{ block['batch'] }}
+            "roll_no"       : {{ block['roll_no'] }}
+            "enrollment_no" : {{ block['enrollment_no'] }}
+            </p>
+        {% else %}
+            <p class="article-content">
+            "title"         : {{ block['title'] }}
+            "info"          : {{ block['info'] }}
+            "hash"          : {{ hash(block) }}
+            </p>
+        {% endif %}
+        </div>
+    </article>
+  {% endblock content %}

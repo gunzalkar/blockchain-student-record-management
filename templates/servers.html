@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="text-align:center;">Server List</h1>
+    <hr>
+    {% for server_response in response %}
+        <article class="media content-section">
+            <div class="media-body">
+            {% if server_response['output'] == 'Up' %}
+                <h4><a href="http://{{ server_response['address'] }}" target="_blank">{{ server_response['address'] }}</a></h4>
+                <h5>{{ server_response['output'] }}</h5>
+                <a class="btn btn-primary" href="http://{{ server_response['address'] }}/show_chain" target="_blank">Chain</a>
+            {% else %}
+                <h4>{{ server_response['address'] }}</h4>
+                <h5>{{ server_response['output'] }}</h5>
+            {% endif %}
+            </div>
+        </article>
+        <hr>
+    {% endfor %}
+{% endblock content %}
